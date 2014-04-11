@@ -1,7 +1,27 @@
 #!/usr/bin/env perl
 use warnings;
 use strict;
+use Term::ANSIColor;
 
 while(<>) {
-  print $_;
+
+
+  my (@matches) = ($_ =~ m/^(.*)(<(black|red|green|yellow|blue|magenta|cyan|white)>)(.+)<\/(black|red|green|yellow|blue|magenta|cyan|white)>(.*)$/);
+
+  if( !@matches )
+  {
+    print $_;
+    next;
+  }
+
+  # print $_;
+  my $pretext   = $matches[0];
+  my $color     = $matches[2];
+  my $colorized = $matches[3];
+  my $posttext  = $matches[5];
+
+  print $pretext, color( $color ), $colorized, color( 'reset' ), $posttext, "\n";
 }
+
+
+__END__
