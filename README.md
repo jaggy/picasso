@@ -18,7 +18,6 @@ A log colorizer...  *well* if you follow the conventions.
 
 ## Sample
 
-    [<yellow>2014-01-01 24:24:24</yellow>]: <green>Some Text</green> here
+![Normal](https://raw.githubusercontent.com/jaggyspaghetti/picasso/master/screenies/normal.png)
 
-
-\[<span style="color: yellow">2014-01-01 24:24:24</span>\]: <span style="color: green">Some Text</span> here
+![Picasso](https://raw.githubusercontent.com/jaggyspaghetti/picasso/master/screenies/picasso.png)
