@@ -3,23 +3,26 @@ use warnings;
 use strict;
 use Term::ANSIColor;
 
+my $reset = color('reset');
+
 while(<>) {
 
+    my (@matches) = ($_ =~ m/(<(black|red|green|yellow|blue|magenta|cyan|white)>)(.*?)(<\/(black|red|green|yellow|blue|magenta|cyan|white)>)/);
 
-  my (@matches) = ($_ =~ m/(.*?)(<(black|red|green|yellow|blue|magenta|cyan|white)>)(.*?)(<\/(black|red|green|yellow|blue|magenta|cyan|white)>)(.*)/);
+    if( !@matches )
+    {
+      print $_;
+      next;
+    }
 
-  if( !@matches )
-  {
+    my $opening = $matches[0];
+    my $color   = color($matches[1]);
+    my $closing = $matches[3];
+
+
+    $_ =~ s/$opening/$color/g;
+    $_ =~ s/$closing/$reset/g;
     print $_;
-    next;
-  }
-
-  my $pretext   = $matches[0];
-  my $color     = $matches[2];
-  my $colorized = $matches[3];
-  my $posttext  = $matches[6];
-
-  print $pretext, color( $color ), $colorized, color( 'reset' ), $posttext, "\n";
 }
 
 
